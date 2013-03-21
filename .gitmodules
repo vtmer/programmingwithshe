@@ -1,0 +1,3 @@
+[submodule "Eevee"]
+	path = Eevee
+	url = git@github.com:bcho/Eevee.git
