@@ -1,3 +1,9 @@
 [submodule "Eevee"]
 	path = Eevee
 	url = git@github.com:bcho/Eevee.git
+[submodule "pws-sandbox"]
+	path = sandbox
+	url = git@github.com:bcho/pws-sandbox.git
+[submodule "sandbox"]
+	path = sandbox
+	url = git@github.com:bcho/pws-sandbox.git
