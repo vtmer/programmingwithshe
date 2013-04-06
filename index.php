@@ -265,6 +265,13 @@ switch (ENVIRONMENT)
 	define('VIEWPATH', $view_folder);
 
 /*
+ * REST_Controller path
+ *
+ * @todo fix autoload problem instead of using require_once
+ */
+define('REST', APPPATH.'/libraries/REST_Controller.php');
+
+/*
  * --------------------------------------------------------------------
  * LOAD THE BOOTSTRAP FILE
  * --------------------------------------------------------------------
