@@ -18,7 +18,7 @@ class Adminlogin extends CI_Controller
         $this->form_validation->set_rules('pwd', 'Password', 'required|max_length[20]|alpha_numeric');
         
         if ($this->form_validation->run() == FALSE) {
-            redirect('login/error');
+            //redirect('login/error');
         } else {
             $admin = $this->input->post('admin');
             $is_admin = $this->admin_model->is($admin, $this->input->post('pwd'));
@@ -33,7 +33,7 @@ class Adminlogin extends CI_Controller
                 
                 redirect('admin');
             } else {
-                redirect('adminlogin/error');
+                //redirect('adminlogin/error');
             }
         }
     }

@@ -38,10 +38,29 @@ class program_model extends CI_Model
 
     public function show_tutor()
     {
+        $this->db->select('content');
+        $this->db->from('content');
+        $this->db->join('tutor','content_id = content.id');
+        $query = $this->db->get();
+        $result = $query->result_array();
+        return $result;
     }
 
     public function add_tutor()
     {
+        $new_content = $this->input->post('add_tutor');
+        $data = array(
+            'content' => $new_content
+        );
+        $this->db->insert('content',$data);
+        $this->db->select_max('id');
+        $query = $this->db->get('content');
+        $result = $query->row_array();
+
+        $data = array(
+            'content_id' => $result['id']
+        );
+        $this->db->insert('tutor',$data);
     }
 
     public function show_user()
