@@ -1,6 +1,6 @@
 <?php
 
-class Backend extends CI_Controller
+class Backendx extends CI_Controller
 {
     public function __construct()
     {
@@ -68,4 +68,3 @@ class Backend extends CI_Controller
         $this->load->view('footer');
     }
 }
-?>
