@@ -1,8 +1,11 @@
 *.swp
+application/cache/
 
 sandbox/runner
 
 system
+vendor/
+composer.phar
 
 application/config/database.php
 application/config/config.php

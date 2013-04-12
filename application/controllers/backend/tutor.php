@@ -15,6 +15,7 @@ class Tutor extends CI_Controller
      */
     public function index()
     {
+        $this->twig->display('tutor.html', array('name' => 'world'));
     }
 
     /*
