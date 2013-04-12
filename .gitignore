@@ -1,5 +1,6 @@
 *.swp
 application/cache/
+.sass-cache/
 
 sandbox/runner
 
