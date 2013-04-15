@@ -70,6 +70,8 @@ $route['404_override'] = '';
 /*
  * backend 路由表
  */
+$route['backend/login'] = 'backend/admin/login';
+$route['backend/logout'] = 'backend/admin/logout';
 $route['backend/tutors'] = 'backend/tutor/index';
 $route['backend/tutor/(:num)'] = 'backend/tutor/get_tutor_by_id/$1';
 $route['backend/tutor/(:num)/remove'] = 'backend/tutor/remove_tutor_by_id/$1';
