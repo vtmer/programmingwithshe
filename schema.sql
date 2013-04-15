@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.5.30, for Linux (x86_64)
+-- MySQL dump 10.14  Distrib 5.5.30-MariaDB, for Linux (x86_64)
 --
 -- Host: localhost    Database: pws
 -- ------------------------------------------------------
--- Server version	5.5.30-log
+-- Server version	5.5.30-MariaDB-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,6 +16,22 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `admin`
+--
+
+DROP TABLE IF EXISTS `admin`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `admin` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(15) NOT NULL,
+  `password` varchar(256) NOT NULL,
+  `token` varchar(40) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `content`
 --
 
@@ -26,17 +42,8 @@ CREATE TABLE `content` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `content` varchar(10000) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `content`
---
-
-LOCK TABLES `content` WRITE;
-/*!40000 ALTER TABLE `content` DISABLE KEYS */;
-/*!40000 ALTER TABLE `content` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `problem`
@@ -50,17 +57,8 @@ CREATE TABLE `problem` (
   `content_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `content_id` (`content_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `problem`
---
-
-LOCK TABLES `problem` WRITE;
-/*!40000 ALTER TABLE `problem` DISABLE KEYS */;
-/*!40000 ALTER TABLE `problem` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `solution`
@@ -80,17 +78,8 @@ CREATE TABLE `solution` (
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `source_id` (`source_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `solution`
---
-
-LOCK TABLES `solution` WRITE;
-/*!40000 ALTER TABLE `solution` DISABLE KEYS */;
-/*!40000 ALTER TABLE `solution` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `tutor`
@@ -104,17 +93,8 @@ CREATE TABLE `tutor` (
   `content_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `content_id` (`content_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tutor`
---
-
-LOCK TABLES `tutor` WRITE;
-/*!40000 ALTER TABLE `tutor` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tutor` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `user`
@@ -130,15 +110,6 @@ CREATE TABLE `user` (
   UNIQUE KEY `session_id` (`session_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `user`
---
-
-LOCK TABLES `user` WRITE;
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -149,4 +120,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-03-28 16:43:23
+-- Dump completed on 2013-04-15 20:10:22
