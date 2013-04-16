@@ -18,7 +18,7 @@ class Tutor extends Auth_Controller
     public function index()
     {
         $data = $this->tutor_model->get();
-        $this->twig->display('backend/index.html', array('cur' => 'tutor', 'data' => $data));
+        $this->twig->display('backend/tutor.html', array('cur' => 'tutor', 'data' => $data));
     }
 
     /*
