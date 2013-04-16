@@ -41,4 +41,34 @@ class Tutor_model extends Content_model
         $query = $this->db->get();
         return $query->result_array();
     }
+
+    /*
+     *remove_by_id
+     *
+     * 根据 id 删除单条 tutor
+     *
+     * @param int id
+     * @return 查询 result_array
+     */
+    function remove_by_id($id)
+    {
+        $this->db->from($this->model_tb_name)->where('id', $id);
+        $query = $this->db->delete();
+        return $query->result_array();
+    }
+
+    /*
+     *create_tutor
+     *
+     * 增加 tutor
+     *
+     * @param string content
+     */
+    function create_tutor($content)
+    {
+        /* 将 content_id 插入到 tutor 表中*/
+        $content_id = $this->create_content($content);
+        $data = array('content_id' => $content_id);
+        $this->db->insert($this->model_tb_name, $data);
+    }
 }

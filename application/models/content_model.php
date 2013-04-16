@@ -29,9 +29,10 @@ class Content_model extends CI_Model
         $this->db->select('content')->from($this->content_tb_name);
         $query = $this->db->where('id', $id)->get();
         if ($query->num_rows()) {
-            return $query->result_array()[0]['content'];
+            $result = $query -> result_array();
+            return $result[0]['content'];
         }
-        return '';
+        return 0;
     }
 
     /*
@@ -53,7 +54,8 @@ class Content_model extends CI_Model
         $this->db->select_max('id');
         $query = $this->db->get($this->content_tb_name);
         if ($query->num_rows()) {
-            return $query->row_array()[0]['id'];
+            $result = $query -> result_array();
+            return $result[0]['id'];
         }
         return 0;
     }
