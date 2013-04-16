@@ -41,8 +41,9 @@ class Twig
                 }
 
                 $static_url = new Twig_SimpleFunction('static_url', function($file) {
-                    $base_url = $this->CI->config->item('base_url');
-                    $static = $this->CI->config->item('static_path');
+                    $CI = &get_instance();
+                    $base_url = $CI->config->item('base_url');
+                    $static = $CI->config->item('static_path');
                     if (!$static)
                         $static = 'static/';
                     return $base_url . $static . $file;
@@ -50,7 +51,8 @@ class Twig
                 $this->_twig->addFunction($static_url);
 
                 $site_url = new Twig_SimpleFunction('site_url', function($path) {
-                    $this->CI->load->helper('url');
+                    $CI = &get_instance();
+                    $CI->load->helper('url');
                     return site_url($path);
                 });
                 $this->_twig->addFunction($site_url);
