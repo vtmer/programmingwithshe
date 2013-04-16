@@ -29,16 +29,22 @@ class Tutor extends Auth_Controller
      */
     public function get_tutor_by_id($id)
     {
+        $this->load->helper('form');
+        $this->load->library('form_validation');
         $data = $this->tutor_model->get_by_id($id);
 
-        if (empty($data))
+        if ($this->form_validation->run() === false)
         {
-            show_404();
+            $this->twig->display->('edit.html',$data);
         }
         else
         {
-            $this->index();
+            $data = $this->input->post('content');//根据表单的name获取表单的内容
+            $this->tutor_model->edit_tutor($data,$id);
+            redirect('backend/tutor','refresh');
         }
+
+
     }
 
     /*
