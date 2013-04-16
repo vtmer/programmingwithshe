@@ -36,14 +36,14 @@ class Admin extends CI_Controller
             )
         ));
 
+        $attrs = array(
+            'class' => 'form-horizontal'
+        );
+        $config = array(
+            'form' => form_open('backend/login', $attrs)
+        );
         if ($this->form_validation->run() === false) {
-            $attrs = array(
-                'class' => 'form-horizontal'
-            );
-            $config = array(
-                'form' => form_open('backend/login', $attrs)
-            );
-            $this->twig->display('login.html', $config);
+            $this->twig->display('backend/login.html', $config);
         } else {
             /* 登录成功 */
             $info = $this->input->post();
@@ -64,10 +64,8 @@ class Admin extends CI_Controller
                 redirect('/', 'refresh');
             } else {
                 /* 登录失败 */
-                $config = array(
-                    'error' => 'Username or password incorrect'
-                );
-                $this->twig->display('login.html', $config);
+                $config['error'] = 'Username or password incorrect!';
+                $this->twig->display('backend/login.html', $config);
             }
         }
     }
