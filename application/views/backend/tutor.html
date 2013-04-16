@@ -1,0 +1,29 @@
+{% extends 'backend/index.html' %}
+
+{% block title %}Tutor{% endblock %}
+
+{% block data %}
+<div class="table-wrapper span9">
+  <table class="table table-bordered">
+    <tbody>
+      <tr>
+        <th>Title</th>
+        <th>Options</th>
+      </tr>
+      {% for post in data %}
+      {% set post_url = site_url('/backend/tutor/' ~ post['id']) %}
+      <tr>
+        <td>
+          <a href="{{ post_url }}" class="posts-title">post title</a>
+          <span class="date">post created date</span>
+        </td>
+        <td>
+          <a href="{{ post_url }}" class="posts-options">edit</a>
+          <a href="{{ post_url ~ '/delete' }}" class="posts-options options-danger">delete</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

@@ -7,7 +7,7 @@ class Tutor extends Auth_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('tutor_model', 'model');
+        $this->load->model('tutor_model');
     }
 
     /*
@@ -17,7 +17,8 @@ class Tutor extends Auth_Controller
      */
     public function index()
     {
-        $this->twig->display('backend/index.html', array('cur' => 'tutor'));
+        $data = $this->tutor_model->get();
+        $this->twig->display('backend/tutor.html', array('cur' => 'tutor', 'data' => $data));
     }
 
     /*
@@ -28,6 +29,16 @@ class Tutor extends Auth_Controller
      */
     public function get_tutor_by_id($id)
     {
+        $data = $this->tutor_model->get_by_id($id);
+
+        if (empty($data))
+        {
+            show_404();
+        }
+        else
+        {
+            $this->index();
+        }
     }
 
     /*
@@ -46,5 +57,21 @@ class Tutor extends Auth_Controller
      */
     public function create_tutor()
     {
+        $this->load->helper('url');
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('create_tutor','content','required');
+
+        if ($this->form_validation->run() === FALSE)
+        {
+            $this->load->view('add_tutor');
+        }
+        else
+        {
+            $content = $this->input->post('create_tutor');
+            $this->tutor_model->create_tutor($content);
+            redirect('backend/tutor','refresh');
+        }
     }
+    
 }
