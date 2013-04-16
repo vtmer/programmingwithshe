@@ -15,12 +15,17 @@ class Admin extends CI_Controller
      */
     function login()
     {
+        $next = $this->input->get('next');
+
         /* 检查用户是否已经登录 */
         $this->load->helper('form');
         $token = $this->input->cookie('token');
         $username = $this->input->cookie('username');
         if ($this->model->is($username, $token))
-            redirect('/', 'refresh');
+            if ($next)
+                redirect($next, 'refresh');
+            else
+                redirect('/', 'refresh');
 
         $this->load->library('form_validation');
         $this->form_validation->set_rules(array(
@@ -40,7 +45,7 @@ class Admin extends CI_Controller
             'class' => 'form-horizontal'
         );
         $config = array(
-            'form' => form_open('backend/login', $attrs)
+            'form' => form_open(site_url('backend/login') . '?next=' . $next, $attrs)
         );
         if ($this->form_validation->run() === false) {
             $this->twig->display('backend/login.html', $config);
@@ -61,7 +66,11 @@ class Admin extends CI_Controller
                     'expire' => 365 * 24 * 3600,
                     'path' => '/'
                 ));
-                redirect('/', 'refresh');
+
+                if ($next)
+                    redirect($next, 'location');
+                else
+                    redirect('/', 'location');
             } else {
                 /* 登录失败 */
                 $config['error'] = 'Username or password incorrect!';
