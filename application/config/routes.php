@@ -75,6 +75,7 @@ $route['backend/logout'] = 'backend/admin/logout';
 $route['backend/tutors'] = 'backend/tutor/index';
 $route['backend/tutor/(:num)'] = 'backend/tutor/get_tutor_by_id/$1';
 $route['backend/tutor/(:num)/remove'] = 'backend/tutor/remove_tutor_by_id/$1';
+$route['backend/tutor/create'] = 'backend/tutor/create_tutor';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
