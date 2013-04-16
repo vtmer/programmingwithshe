@@ -1,6 +1,8 @@
 <?php if ( ! defined('BASEPATH')) exit ('No direct script access allowed');
 
-class Tutor extends CI_Controller
+require_once 'auth.php';
+
+class Tutor extends Auth_Controller
 {
     public function __construct()
     {
