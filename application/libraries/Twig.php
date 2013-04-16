@@ -48,6 +48,12 @@ class Twig
                     return $base_url . $static . $file;
                 });
                 $this->_twig->addFunction($static_url);
+
+                $site_url = new Twig_SimpleFunction('site_url', function($path) {
+                    $this->CI->load->helper('url');
+                    return site_url($path);
+                });
+                $this->_twig->addFunction($site_url);
 	}
 
 	public function add_function($name) 
