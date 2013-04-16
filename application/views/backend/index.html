@@ -1,0 +1,39 @@
+{% extends 'backend/skel.html' %}
+
+{% block title %}index{% endblock %}
+
+{% block main %}
+    <div class="main-wrapper container">
+      <header>
+        <h1 class="brand">( ╯#-_-)╯╧═╧ </h1>
+      </header>
+      <nav class="navbar section-navigation" role="navigation">
+        <div class="navbar-inner">
+          <div class="container">
+            <ul>
+              {% for nav in ['tutor', 'problem', 'user', 'solution'] %}
+              <li class="section {% if cur == nav %}section-activate{% endif %}"><a href="{{ site_url('backend') }}/{{ nav }}">{{ nav|capitalize }}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <section class="row posts-wrapper" role="main">
+        <div class="options-wrapper span3">
+          <ul class="nav nav-list">
+            <li class="nav-header">Options</li>
+            {% block options %}
+            {% endblock %}
+            <li><a href="{{ site_url('backend/logout') }}">Logout</a></li>
+          </ul>
+        </div>
+        {% block data %}
+        {% endblock %}
+      </section>
+      <footer role="copyright">
+        <p>Created by Maureen, xiaosheng and hbc with <span>♥</span></p>
+        <p>Powered by <a href="http://ellislab.com/codeigniter">Codeigniter</a>, <a href="https://github.com/openjudge/sandbox">openjudge/sandbox</a>, <a href="http://twitter.github.com/bootstrap/">Bootstrap</a> and <a href="http://sass-lang.com/">SASS</a>.</p>
+      </footer>
+    </div>
+
+{% endblock %}
