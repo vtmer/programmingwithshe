@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>pws ~ backend</title>
+    <link rel="stylesheet" href="static/css/bootstrap.css" />
+    <link rel="stylesheet" href="static/css/style.css" />
+  </head>
+  <body>
+    <div class="main-wrapper container">
+      <header>
+        <h1 class="brand">( ╯#-_-)╯╧═╧ </h1>
+      </header>
+      <nav class="navbar section-navigation" role="navigation">
+        <div class="navbar-inner">
+          <div class="container">
+            <ul>
+              <li class="section"><a href="#">Tutor</a></li>
+              <li class="section"><a href="#">Problem</a></li>
+              <li class="section"><a href="#">Solution</a></li>
+              <li class="section"><a href="#">User</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <section class="row posts-wrapper" role="main">
+        <div class="options-wrapper span3">
+          <ul class="nav nav-list">
+            <li class="nav-header">Options</li>
+            <li><a href="#" class="submit-link">Save</a></li>
+            <li><a href="#">Logout</a></li>
+          </ul>
+        </div>
+        <div class="form-wrapper offset3 span6">
+          <form action="#" class="admin-form" method="POST" id="form">
+            <div class="controls-group">
+              <div class="controls">
+                <input type="text" name="username" class="span3" placeholder="Username" />
+              </div>
+            </div>
+            <div class="controls-group">
+              <div class="controls">
+                <input type="password" name="password" class="span3" placeholder="Password" />
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+      <footer role="copyright">
+        <p>Created by Maureen, xiaosheng and hbc with <span>♥</span></p>
+        <p>Powered by <a href="http://ellislab.com/codeigniter">Codeigniter</a>, <a href="https://github.com/openjudge/sandbox">openjudge/sandbox</a>, <a href="http://twitter.github.com/bootstrap/">Bootstrap</a> and <a href="http://sass-lang.com/">SASS</a>.</p>
+      </footer>
+    </div>
+  </body>
+  <script type="text/javascript">
+    var form = document.getElementById('form'),
+        submit_link = document.getElementsByClassName('submit-link')[0];
+    submit_link.addEventListener('click', function(e) {
+        form.submit();
+        e.preventDefault();
+    });
+  </script>
+</html>
