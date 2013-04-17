@@ -99,7 +99,7 @@ class Tutor extends Auth_Controller
         }
         else
         {
-            $content = $this->input->post('create_tutor');
+            $content = $this->input->post('content');
             $this->tutor_model->create_tutor($content);
             redirect('backend/tutor','refresh');
         }
