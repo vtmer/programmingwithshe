@@ -59,4 +59,31 @@ class Content_model extends CI_Model
         }
         return 0;
     }
+
+    /*
+     * remove_content
+     *
+     * 删除一条`content`,
+     *
+     * @param int id
+     */
+    function remove_content($id)
+    {
+        $this->db->where('id', $id);
+        $this->db->delete('content_tb_name');
+    }
+
+    /*
+     * edit_content
+     *
+     * 更新content 中内容
+     *
+     * @param int id
+     * @param array data
+     */
+    function edit_content($id,$data)
+    {
+        $this->db->where('id', $id);
+        $this->db->update('content_tb_name',$data);
+    }
 }

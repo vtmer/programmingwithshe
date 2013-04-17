@@ -32,6 +32,7 @@ class Tutor extends Auth_Controller
      */
     public function get_tutor_by_id($id)
     {
+        $this->load->helper('url');
         $this->load->helper('form');
         $this->load->library('form_validation');
         $this->form_validation->set_rules('content', 'Contnet', 'required');
@@ -53,7 +54,7 @@ class Tutor extends Auth_Controller
         else
         {
             $data = $this->input->post('content');//根据表单的name获取表单的内容
-            $this->tutor_model->edit_tutor($data,$id);
+            $this->tutor_model->edit_tutor($id,$data);
             redirect('backend/tutor','refresh');
         }
 
@@ -67,6 +68,9 @@ class Tutor extends Auth_Controller
      */
     public function remove_tutor_by_id($id)
     {
+        $this->load->helper('url');
+        $this->tutor_model->remove_by_id($id);
+        redirect('backend/tutor', 'refresh');
     }
 
     /*
