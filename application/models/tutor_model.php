@@ -71,4 +71,17 @@ class Tutor_model extends Content_model
         $data = array('content_id' => $content_id);
         $this->db->insert($this->model_tb_name, $data);
     }
+
+    /*
+     * edit_tutor
+     *
+     * 修改 tutor
+     *
+     * @param data
+     */
+    function edit_tutor($data,$id)
+    {
+        $this->db->where('id',$id);
+        $this->db->update($this->model_tb_name,$data);
+    }
 }
