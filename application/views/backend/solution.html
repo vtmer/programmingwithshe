@@ -1,9 +1,9 @@
 {% extends 'backend/index.html' %}
 
-{% block title %}Problem{% endblock %}
+{% block title %}Solution{% endblock %}
 
 {% block options %}
-<li><a href="{{ site_url('/backend/problem/create') }}">Create</a></li>
+<li><a href="{{ site_url('/backend/solution/create') }}">Create</a></li>
 {% endblock %}
 
 {% block data %}
@@ -15,7 +15,7 @@
         <th>Options</th>
       </tr>
       {% for post in data %}
-      {% set post_url = site_url('/backend/problem/' ~ post['id']) %}
+      {% set post_url = site_url('/backend/solution/' ~ post['id']) %}
       <tr>
         <td>
           <a href="{{ post_url }}" class="posts-title">post title</a>
