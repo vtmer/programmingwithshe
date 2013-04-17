@@ -29,18 +29,19 @@ class Tutor extends Auth_Controller
      */
     public function get_tutor_by_id($id)
     {
+        $this->load->helper('url');
         $this->load->helper('form');
         $this->load->library('form_validation');
         $data = $this->tutor_model->get_by_id($id);
 
         if ($this->form_validation->run() === false)
         {
-            $this->twig->display->('edit.html',$data);
+            //$this->twig->display->('edit.html', 'data' => $data);
         }
         else
         {
             $data = $this->input->post('content');//根据表单的name获取表单的内容
-            $this->tutor_model->edit_tutor($data,$id);
+            $this->tutor_model->edit_tutor($id,$data);
             redirect('backend/tutor','refresh');
         }
 
@@ -54,6 +55,9 @@ class Tutor extends Auth_Controller
      */
     public function remove_tutor_by_id($id)
     {
+        $this->load->helper('url');
+        $this->tutor_model->remove_by_id($id);
+        redirect('backend/tutor', 'refresh');
     }
 
     /*

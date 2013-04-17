@@ -12,6 +12,7 @@ class Tutor_model extends Content_model
      * 根据 id 获取单条 tutor
      *
      * @param int id
+     * id 为 tutor 表主键
      * @return 查询 result_array
      */
     public function get_by_id($id)
@@ -48,13 +49,13 @@ class Tutor_model extends Content_model
      * 根据 id 删除单条 tutor
      *
      * @param int id
+     * id 为 tutor 表主键
      * @return 查询 result_array
      */
     function remove_by_id($id)
     {
-        $this->db->from($this->model_tb_name)->where('id', $id);
-        $query = $this->db->delete();
-        return $query->result_array();
+        $content_id = $this->get_content_id($id);
+        $this->remove_content($content_id);
     }
 
     /*
@@ -76,12 +77,32 @@ class Tutor_model extends Content_model
      * edit_tutor
      *
      * 修改 tutor
+     * id 为 tutor 表主键
      *
-     * @param data
+     * @param int id
+     * @param array data
      */
-    function edit_tutor($data,$id)
+    function edit_tutor($id,$data)
     {
-        $this->db->where('id',$id);
-        $this->db->update($this->model_tb_name,$data);
+        $content_id = $this->get_content_id($id);
+        $this->edit_content($content_id, $data);
     }
-}
+
+    /*
+     * get_content_id
+     *
+     * 由tutor 表主键得到content 表中的主键
+     * @param int id  
+     * id 为 tutor 表主键
+     * 
+     * return content_id
+     * content_id 为content表的主键
+     */
+    function get_content_id($id)
+    {
+        $query = $this->db->from('model_tb_name')
+                          ->where('id', $id)
+                          ->get();
+        $result = $query -> result_array();
+        return $result['0']['content_id'];
+    }
