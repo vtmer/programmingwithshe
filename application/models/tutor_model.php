@@ -61,6 +61,8 @@ class Tutor_model extends Content_model
     {
         $content_id = $this->get_content_id($id);
         $this->remove_content($content_id);
+        $this->db->where('id', $id);
+        $this->db->delete($this->model_tb_name);
     }
 
     /*
@@ -105,10 +107,10 @@ class Tutor_model extends Content_model
      */
     function get_content_id($id)
     {
-        $query = $this->db->from('model_tb_name')
-                          ->where('id', $id)
-                          ->get();
+        $this->db->where('id',$id);
+        $this->db->select('content_id');
+        $query = $this->db->get($this->model_tb_name);
         $result = $query -> result_array();
-        return $result['0']['content_id'];
+        return $result[0]['content_id'];
     }
 }
