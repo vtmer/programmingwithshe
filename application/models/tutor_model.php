@@ -11,14 +11,20 @@ class Tutor_model extends Content_model
      *
      * 根据 id 获取单条 tutor
      *
-     * @param int id
+     * @param int   id
+     * @param bool  load_content 是否获取内容
      * @return 查询 result_array
      */
-    public function get_by_id($id)
+    public function get_by_id($id, $load_content=False)
     {
         $this->db->from($this->model_tb_name)->where('id', $id);
         $query = $this->db->get();
-        return $query->result_array();
+        $ret = $query->result_array();
+        if ($ret)
+            $ret = $ret[0];
+        if ($load_content && $ret['content_id'])
+            $ret['content'] = $this->get_content($ret['content_id']);
+        return $ret;
     }
 
     /*
