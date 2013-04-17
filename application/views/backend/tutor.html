@@ -2,6 +2,10 @@
 
 {% block title %}Tutor{% endblock %}
 
+{% block options %}
+<li><a href="{{ site_url('/backend/tutor/create') }}">Create</a></li>
+{% endblock %}
+
 {% block data %}
 <div class="table-wrapper span9">
   <table class="table table-bordered">

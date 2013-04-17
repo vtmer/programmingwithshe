@@ -3,22 +3,34 @@
 {% block title %}Create{% endblock %}
 
 {% block options %}
-<li><a href="#">Save</a></li>
+<li><a href="#" class="form-submit">Save</a></li>
 {% endblock %}
 
 {% block data%}
-  <div class="form-wrapper span9">
-    <form action="#" class="editor" method="POST" class="form-horizontal">
+<div class="form-wrapper span9">
+    {{ form|raw }}
       <div class="controls-group">
         <div class="controls">
-          <input type="text" class="span3" />
+          <input type="text" class="span3" name="title" value="{% block post_title %}{% endblock %}" />
         </div>
       </div>
       <div class="controls-group">
         <div class="controls">
-          <textarea id="content" name="content" class="span9" rows="15"></textarea>
+          <textarea id="content" name="content" class="span9" rows="15">{% block post_content %}{% endblock %}</textarea>
         </div>
       </div>
     </form>
   </div>
+{% endblock %}
+
+{% block afterbody %}
+<script type="text/javascript">
+var submit_link = document.getElementsByClassName('form-submit')[0],
+    form = document.getElementById('form'),
+    i;
+submit_link.addEventListener('click', function(e) {
+    form.submit();
+    e.preventDefault();
+});
+</script>
 {% endblock %}
