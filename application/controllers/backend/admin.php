@@ -98,4 +98,39 @@ class Admin extends CI_Controller
         /* TODO redirect to next parameter */
         redirect('/', 'location');
     }
+
+    /*
+     * /backend/admin/create
+     *
+     */
+    function create()
+    {
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules(array(
+            array(
+                'field' => 'username',
+                'label' => 'Username',
+                'rules' => 'required|xss_clean'
+            ),
+            array(
+                'field' => 'password',
+                'label' => 'Password',
+                'rules' => 'required|xss_clean'
+            )
+        ));
+        $attrs = array('class' => 'admin-form', 'id' => 'form');
+        $config = array(
+            'form' => form_open(site_url('backend/admin/create'), $attrs)
+        );
+
+        if ($this->form_validation->run() === false) {
+            $this->twig->display('backend/register.html', $config);
+        } else {
+            $username = $this->input->post('username');
+            $password = $this->input->post('password');
+            $this->model->create($username, $password);
+            redirect('/backend', 'location');
+        }
+    }
 }

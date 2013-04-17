@@ -24,7 +24,10 @@
             <li class="nav-header">Options</li>
             {% block options %}
             {% endblock %}
+            {% block optional_options %}
+            <li><a href="{{ site_url('backend/admin/create') }}">Create user</a></li>
             <li><a href="{{ site_url('backend/logout') }}">Logout</a></li>
+            {% endblock %}
           </ul>
         </div>
         {% block data %}
