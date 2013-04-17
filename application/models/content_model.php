@@ -70,7 +70,7 @@ class Content_model extends CI_Model
     function remove_content($id)
     {
         $this->db->where('id', $id);
-        $this->db->delete('content_tb_name');
+        $this->db->delete($this->content_tb_name);
     }
 
     /*
@@ -84,6 +84,6 @@ class Content_model extends CI_Model
     function edit_content($id,$data)
     {
         $this->db->where('id', $id);
-        $this->db->update('content_tb_name',$data);
+        $this->db->update($this->content_tb_name, $data);
     }
 }
