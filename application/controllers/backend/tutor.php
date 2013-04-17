@@ -69,7 +69,7 @@ class Tutor extends Auth_Controller
     public function remove_tutor_by_id($id)
     {
         $this->load->helper('url');
-        $this->tutor_model->remove_by_id($id);
+        $this->tutor_model->remove_tutor_by_id($id);
         redirect('backend/tutor', 'refresh');
     }
 

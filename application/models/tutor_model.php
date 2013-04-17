@@ -15,7 +15,7 @@ class Tutor_model extends Content_model
      * @param bool  load_content    是否获取内容
      * @return 查询 result_array
      */
-    public function get_by_id($id, $load_content=False)
+    function get_by_id($id, $load_content = false)
     {
         $this->db->from($this->model_tb_name)->where('id', $id);
         $query = $this->db->get();
@@ -36,7 +36,7 @@ class Tutor_model extends Content_model
      * @param bool  load_content    是否同时获取 content
      * @return 查询 result_array
      */
-    public function get($limit = 0, $load_content = false)
+    function get($limit = 0, $load_content = false)
     {
         $this->db->from($this->model_tb_name);
         if ($limit)
@@ -49,7 +49,7 @@ class Tutor_model extends Content_model
     }
 
     /*
-     *remove_by_id
+     *remove_tutor_by_id
      *
      * 根据 id 删除单条 tutor
      *
@@ -57,7 +57,7 @@ class Tutor_model extends Content_model
      * id 为 tutor 表主键
      * @return 查询 result_array
      */
-    function remove_by_id($id)
+    function remove_tutor_by_id($id)
     {
         $content_id = $this->get_content_id($id);
         $this->remove_content($content_id);
@@ -96,8 +96,9 @@ class Tutor_model extends Content_model
     }
 
     /*
-     * get_content_id
+     * get_content_id *
      *
+     * 
      * 由tutor 表主键得到content 表中的主键
      * @param int id  
      * id 为 tutor 表主键
