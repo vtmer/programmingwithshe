@@ -77,5 +77,9 @@ $route['backend/tutor/(:num)'] = 'backend/tutor/get_tutor_by_id/$1';
 $route['backend/tutor/(:num)/remove'] = 'backend/tutor/remove_tutor_by_id/$1';
 $route['backend/tutor/create'] = 'backend/tutor/create_tutor';
 
+$route['backend/problems'] = 'backend/problem/index';
+$route['backend/problem/(:num)'] = 'backend/problem/get_problem_by_id/$1';
+$route['backend/problem/(:num)/remove'] = 'backend/problem/remove_problem_by_id/$1';
+$route['backend/problem/create'] = 'backend/problem/create_problem';
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
