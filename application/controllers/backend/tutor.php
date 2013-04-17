@@ -18,7 +18,10 @@ class Tutor extends Auth_Controller
     public function index()
     {
         $data = $this->tutor_model->get();
-        $this->twig->display('backend/tutor.html', array('cur' => 'tutor', 'data' => $data));
+        $this->twig->display('backend/tutor.html', array(
+            'cur' => 'tutor',
+            'data' => $data
+        ));
     }
 
     /*
@@ -35,7 +38,10 @@ class Tutor extends Auth_Controller
 
         if ($this->form_validation->run() === false)
         {
-            $this->twig->display->('edit.html',$data);
+            $this->twig->display('backend/edit.html', array(
+                'cur' => 'tutor',
+                'data' => $data
+            ));
         }
         else
         {
@@ -70,7 +76,9 @@ class Tutor extends Auth_Controller
 
         if ($this->form_validation->run() === FALSE)
         {
-            $this->load->view('add_tutor');
+            $this->twig->display('backend/create.html', array(
+                'cur' => 'tutor'
+            ));
         }
         else
         {

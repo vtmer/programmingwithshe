@@ -1,0 +1,24 @@
+{% extends 'backend/index.html' %}
+
+{% block title %}Create{% endblock %}
+
+{% block options %}
+<li><a href="#">Save</a></li>
+{% endblock %}
+
+{% block data%}
+  <div class="form-wrapper span9">
+    <form action="#" class="editor" method="POST" class="form-horizontal">
+      <div class="controls-group">
+        <div class="controls">
+          <input type="text" class="span3" />
+        </div>
+      </div>
+      <div class="controls-group">
+        <div class="controls">
+          <textarea id="content" name="content" class="span9" rows="15"></textarea>
+        </div>
+      </div>
+    </form>
+  </div>
+{% endblock %}
