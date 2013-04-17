@@ -34,13 +34,20 @@ class Tutor extends Auth_Controller
     {
         $this->load->helper('form');
         $this->load->library('form_validation');
-        $data = $this->tutor_model->get_by_id($id);
+        $this->form_validation->set_rules('content', 'Contnet', 'required');
+        $attr = array(
+            'class' => 'editor',
+            'id' => 'form'
+        );
+        $form = form_open(site_url('backend/tutor/' . $id), $attr);
+        $data = $this->tutor_model->get_by_id($id, true);
 
         if ($this->form_validation->run() === false)
         {
             $this->twig->display('backend/edit.html', array(
                 'cur' => 'tutor',
-                'data' => $data
+                'data' => $data,
+                'form' => $form
             ));
         }
         else
@@ -72,12 +79,18 @@ class Tutor extends Auth_Controller
         $this->load->helper('url');
         $this->load->helper('form');
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('create_tutor','content','required');
+        $this->form_validation->set_rules('content', 'Contnet', 'required');
+        $attr = array(
+            'class' => 'editor',
+            'id' => 'form'
+        );
+        $form = form_open(site_url('backend/tutor/create'), $attr);
 
         if ($this->form_validation->run() === FALSE)
         {
             $this->twig->display('backend/create.html', array(
-                'cur' => 'tutor'
+                'cur' => 'tutor',
+                'form' => $form
             ));
         }
         else
