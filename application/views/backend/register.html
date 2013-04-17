@@ -1,0 +1,39 @@
+{% extends 'backend/index.html' %}
+
+{% block title %}Create admin{% endblock %}
+
+{% block options %}
+<li><a href="#" class="submit-link">Save</a></li>
+{% endblock %}
+
+{% block optional_options %}
+<li><a href="{{ site_url('backend/logout') }}">Logout</a></li>
+{% endblock %}
+
+{% block data %}
+<div class="form-wrapper offset3 span6">
+  {{ form|raw }}
+    <div class="controls-group">
+      <div class="controls">
+        <input type="text" name="username" class="span3" placeholder="Username" />
+      </div>
+    </div>
+    <div class="controls-group">
+      <div class="controls">
+        <input type="password" name="password" class="span3" placeholder="Password" />
+      </div>
+    </div>
+  </form>
+</div>
+{% endblock %}
+
+{% block afterbody %}
+<script type="text/javascript">
+  var form = document.getElementById('form'),
+      submit_link = document.getElementsByClassName('submit-link')[0];
+  submit_link.addEventListener('click', function(e) {
+      form.submit();
+      e.preventDefault();
+  });
+</script>
+{% endblock %}
