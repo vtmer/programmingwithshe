@@ -13,11 +13,11 @@ class Auth_Controller extends CI_Controller
     {
         parent::__construct();
         $this->load->helper('url');
-        $this->load->model('admin_model', 'model');
+        $this->load->model('admin_model', 'admin_model');
 
         $token = $this->input->cookie('token');
         $username = $this->input->cookie('username');
-        if (!$this->model->is($username, $token))
+        if (!$this->admin_model->is($username, $token))
             redirect(site_url() . '/backend/login?next=' . current_url(),
                      'location');
     }
