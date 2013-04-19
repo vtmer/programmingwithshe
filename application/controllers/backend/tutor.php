@@ -34,7 +34,18 @@ class Tutor extends Auth_Controller
     {
         $this->load->helper('form');
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('content', 'Contnet', 'required');
+        $this->form_validation->set_rules(array(
+            array(
+                'field' => 'content',
+                'label' => 'Content',
+                'rules' => 'required|xss_clean'
+            ),
+            array(
+                'field' => 'title',
+                'label' => 'Title',
+                'rules' => 'required|xss_clean'
+            )
+        ));
         $attr = array(
             'class' => 'editor',
             'id' => 'form'
@@ -52,8 +63,7 @@ class Tutor extends Auth_Controller
         }
         else
         {
-            $content = $this->input->post('content');//根据表单的name获取表单的内容
-            $update_data['content'] = $content;
+            $update_data = $this->input->post();
             $this->tutor_model->edit_tutor($id, $update_data);
             redirect('backend/tutor','refresh');
         }
@@ -83,7 +93,18 @@ class Tutor extends Auth_Controller
         $this->load->helper('url');
         $this->load->helper('form');
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('content', 'Contnet', 'required');
+        $this->form_validation->set_rules(array(
+            array(
+                'field' => 'content',
+                'label' => 'Content',
+                'rules' => 'required|xss_clean'
+            ),
+            array(
+                'field' => 'title',
+                'label' => 'Title',
+                'rules' => 'required|xss_clean'
+            )
+        ));
         $attr = array(
             'class' => 'editor',
             'id' => 'form'
@@ -99,8 +120,8 @@ class Tutor extends Auth_Controller
         }
         else
         {
-            $content = $this->input->post('content');
-            $this->tutor_model->create_tutor($content);
+            $data = $this->input->post();
+            $this->tutor_model->create_tutor($data);
             redirect('backend/tutor','refresh');
         }
     }

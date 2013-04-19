@@ -18,8 +18,8 @@
       {% set post_url = site_url('/backend/problem/' ~ post['id']) %}
       <tr>
         <td>
-          <a href="{{ post_url }}" class="posts-title">post title</a>
-          <span class="date">post created date</span>
+          <a href="{{ post_url }}" class="posts-title">{{ post['title'] }}</a>
+          <span class="date">{{ post['created'] is empty ? '' : post['created']|date('Y/m/d H:i', timezone='Asia/Hong_Kong') }}</span>
         </td>
         <td>
           <a href="{{ post_url }}" class="posts-options">edit</a>

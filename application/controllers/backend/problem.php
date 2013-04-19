@@ -36,7 +36,18 @@ class Problem extends Auth_Controller
     {
         $this->load->helper('form');
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('content', 'Content', 'required');
+        $this->form_validation->set_rules(array(
+            array(
+                'field' => 'content',
+                'label' => 'Content',
+                'rules' => 'required|xss_clean'
+            ),
+            array(
+                'field' => 'title',
+                'label' => 'Title',
+                'rules' => 'required|xss_clean'
+            )
+        ));
         $attr = array(
             'class' => 'editor',
             'id' => 'form'
@@ -44,16 +55,14 @@ class Problem extends Auth_Controller
         $form = form_open(site_url('backend/problem/' . $id), $attr);
         $data = $this->problem_model->get_by_id($id, true);
 
-        if ($this->form_validation->run() === false)
-        {
+        if ($this->form_validation->run() === false) {
             $this->twig->display('backend/edit.html',array(
                 'cur' => 'problem',
                 'data' => $data,
                 'form' => $form
             ));
-        }else{
-            $content = $this->input->post('content');
-            $update_data['content'] = $content;
+        } else {
+            $update_data = $this->input->post();
             $this->problem_model->edit_problem($id, $update_data);
             redirect('backend/problem', 'refresh');
         }
@@ -81,7 +90,18 @@ class Problem extends Auth_Controller
     {
         $this->load->helper('form');
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('content', 'Content', 'required');
+        $this->form_validation->set_rules(array(
+            array(
+                'field' => 'content',
+                'label' => 'Content',
+                'rules' => 'required|xss_clean'
+            ),
+            array(
+                'field' => 'title',
+                'label' => 'Title',
+                'rules' => 'required|xss_clean'
+            )
+        ));
         $attr = array(
             'class' => 'editor',
             'id' => 'form'
@@ -95,8 +115,8 @@ class Problem extends Auth_Controller
                 'form' => $form
             ));
         } else {
-            $content = $this->input->post('content');
-            $this->problem_model->create_problem($content);
+            $data = $this->input->post();
+            $this->problem_model->create_problem($data);
             redirect('backend/problem', 'refresh');
         }
     }

@@ -71,12 +71,17 @@ class Problem_model extends Content_model
      *
      * 添加 problem
      *
-     * @param string content
+     * @param string data
      */
-    function create_problem($content)
+    function create_problem($data)
     {
+        /* 将 content_id 插入到 tutor 表中*/
+        $content = $data['content'];
         $content_id = $this->create_content($content);
-        $data = array('content_id' => $content_id);
+        $data = array(
+            'content_id' => $content_id,
+            'title' => $data['title']
+        );
         $this->db->insert($this->model_tb_name, $data);
     }
      
@@ -105,8 +110,17 @@ class Problem_model extends Content_model
      */
     function edit_problem($id, $data)
     {
+        $content = array(
+            'content' => $data['content']
+        );
+        $title = array(
+            'title' => $data['title']
+        );
+
         $content_id = $this->get_content_id($id);
-        $this->edit_content($content_id, $data);
+        $this->edit_content($content_id, $content);
+        $this->db->where('id', $id);
+        $this->db->update($this->model_tb_name, $title);
     }
     
 }
