@@ -73,6 +73,7 @@ $route['404_override'] = '';
 $route['backend/login'] = 'backend/admin/login';
 $route['backend/logout'] = 'backend/admin/logout';
 $route['backend/admin/create'] = 'backend/admin/create';
+
 $route['backend/tutor'] = 'backend/tutor/index';
 $route['backend/tutor/(:num)'] = 'backend/tutor/get_tutor_by_id/$1';
 $route['backend/tutor/(:num)/remove'] = 'backend/tutor/remove_tutor_by_id/$1';
@@ -84,5 +85,8 @@ $route['backend/problem/(:num)/remove'] = 'backend/problem/remove_problem_by_id/
 $route['backend/problem/create'] = 'backend/problem/create_problem';
 
 $route['backend/solution'] = 'backend/solution/index';
+
+$route['backend/user'] = 'backend/user/index';
+$route['backend/user/(:num)'] = 'backend/user/get_by_id/$1';
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

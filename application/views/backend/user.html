@@ -1,0 +1,31 @@
+{% extends 'backend/index.html' %}
+
+{% block title %}User{% endblock %}
+
+{% block options %}
+{% endblock %}
+
+{% block data %}
+<div class="table-wrapper span9">
+  <table class="table table-bordered">
+    <tbody>
+      <tr>
+        <th>Title</th>
+        <th>Options</th>
+      </tr>
+      {% for post in data %}
+      {% set post_url = site_url('/backend/user/' ~ post['id']) %}
+      <tr>
+        <td>
+          <a href="{{ post_url }}" class="posts-title">{{ post['session_id']|slice(0, 5) }} at {{ post['current'] }}</a>
+          <span class="date">{{ post['created'] is empty ? '' : post['created']|date('Y/m/d H:i', timezone='Asia/Hong_Kong') }}</span>
+        </td>
+        <td>
+          <a href="{{ post_url }}" class="posts-options">views</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

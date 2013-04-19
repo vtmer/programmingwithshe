@@ -1,0 +1,25 @@
+{% extends 'backend/index.html' %}
+
+{% block title %}User{% endblock %}
+
+{% block data %}
+<div class="form-wrapper span9">
+    <div class="uneditable-form">
+      <div class="controls-group">
+        <div class="controls">
+          <span class="uneditable-input span3">{{ data['session_id']|slice(0, 5) }}</span>
+        </div>
+      </div>
+      <div class="controls-group">
+        <div class="controls">
+          <span class="uneditable-input span3">{{ data['current'] }}</span>
+        </div>
+      </div>
+      <div class="controls-group">
+        <div class="controls">
+          <span class="uneditable-input span3">{{ data['created']|date('Y/m/d H:i', timezone='Asia/Hong_Kong') }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
