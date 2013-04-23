@@ -19,7 +19,9 @@ class Problem_model extends Content_model
         $this->db->select('content_id');
         $query = $this->db->get($this->model_tb_name);
         $result = $query -> result_array();
-        return $result[0]['content_id'];
+        var_dump($result);
+        return 1;
+        //return $result[0]['content_id'];
     }
 
 
