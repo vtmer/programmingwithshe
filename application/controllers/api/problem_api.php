@@ -11,25 +11,46 @@ class problem_api extends REST_Controller
 		$this->load->model('problem_model');
 	}
 
-	function content_id_get()
+	/*根据获取的limit的值来决定获取的problems的条数
+	 *
+	 *运用model中的get()方法
+	 *获取的数据返回浏览器
+	 */
+
+	function problems_get()
 	{
-		
-		$check=$this->problem_model->get_content_id($this->get('id'));
+		$check=$this->problem_model->get($this->get('limit'),false);
+
+		if($check)
+			response($check,200);
+		else
+			response(array('error' =>'problem could not be found'),404);
+	}
+
+
+
+	/*根据id获取单条的problem
+	 *
+	 *根据content_id获取单条content
+	 *
+	 *response
+	 */
+	function problem_get()
+	{
+		$check=$this->problem_model->get_by_id($this->get('id'),true);
 		if($check)
 		{
-			$this->response($check,200);
+			$data['problem']=$check;
+
+			$check=$this->problem_model->get_content_id($this->get('content_id'));
+			$data['content']=$check;
+
+			response($data,200);
 		}
 		else
-		{
-			$this->response(array('error' => 'User could not be found'), 404);
-		}
+			response(array('error' =>'this problem could not be found'),404);
 	}
 
-
-	function get_by_id()
-	{
-		$check=$this->problem_model->get_id_id($this->get('id'),true);
-	}
 }
 
 
