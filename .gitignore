@@ -11,3 +11,4 @@ composer.phar
 application/config/database.php
 application/config/config.php
 application/libraries/Twig
+applicationo/logs
