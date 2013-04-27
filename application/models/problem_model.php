@@ -75,7 +75,7 @@ class Problem_model extends Content_model
      *
      * @param string data
      */
-    function create_problem($data);
+    function create_problem($data)
     {
         /* 将 content_id 插入到 tutor 表中*/
         $content = $data['content'];

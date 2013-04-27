@@ -20,11 +20,11 @@ class problem_api extends REST_Controller
 	function problems_get()
 	{
 		$check=$this->problem_model->get($this->get('limit'),false);
-
-		if($check)
-			response($check,200);
+if
+		($check)
+			$this->response($check,200);
 		else
-			response(array('error' =>'problem could not be found'),404);
+			$this->response(array('error' =>'problem could not be found'),404);
 	}
 
 
@@ -45,10 +45,10 @@ class problem_api extends REST_Controller
 			$check=$this->problem_model->get_content_id($this->get('content_id'));
 			$data['content']=$check;
 
-			response($data,200);
+			$this->response($data,200);
 		}
 		else
-			response(array('error' =>'this problem could not be found'),404);
+			$this->response(array('error' =>'this problem could not be found'),404);
 	}
 
 }
