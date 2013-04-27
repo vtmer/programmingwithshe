@@ -88,5 +88,15 @@ $route['backend/solution'] = 'backend/solution/index';
 
 $route['backend/user'] = 'backend/user/index';
 $route['backend/user/(:num)'] = 'backend/user/get_by_id/$1';
+
+/*
+ * api 路由表
+ */
+$route['api/problems.*'] = 'api/problem_api/problems';
+$route['api/problem/(:num).*'] = 'api/problem_api/problem';
+
+$route['api/tutors.*'] = 'api/tutor_api/tutors';
+$route['api/tutor/(:num).*'] = 'api/tutor_api/tutor';
+
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
