@@ -67,6 +67,8 @@
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 
+$route['run'] = 'ideone/index';
+
 /*
  * backend 路由表
  */
