@@ -102,14 +102,20 @@ class Ideone extends CI_Controller
      */
     function index()
     {
+        $result = array(
+            'result' => 'Method not allowed'
+        );
         $code = $this->input->post('code');
-        $submit = $this->submit($code);
-        if ($submit['error'] === 'OK') {
-            $result = $this->result($submit['link']);
-        } else {
-            $result = array(
-                'result' => $submit['result']
-            );
+        if ($code) {
+            $submit = $this->submit($code);
+
+            if ($submit['error'] === 'OK') {
+                $result = $this->result($submit['link']);
+            } else {
+                $result = array(
+                    'result' => $submit['result']
+                );
+            }
         }
 
         echo json_encode($result);
