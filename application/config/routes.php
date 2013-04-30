@@ -67,8 +67,6 @@
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 
-$route['run'] = 'ideone/index';
-
 /*
  * backend 路由表
  */
@@ -99,6 +97,9 @@ $route['api/problem/(:num).*'] = 'api/problem_api/problem';
 
 $route['api/tutors.*'] = 'api/tutor_api/tutors';
 $route['api/tutor/(:num).*'] = 'api/tutor_api/tutor';
+
+$route['api/run'] = 'api/ideone/index';
+
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

@@ -1,12 +1,14 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
+require_once REST;
+
 /*
  * Ideone_Controller
  *
  * 使用 ideone 提供的 api 运行用户提交的代码
  *
  */
-class Ideone extends CI_Controller
+class Ideone extends REST_Controller
 {
     private $api_uri = 'http://ideone.com/api/1/service.wsdl';
     private $client;
@@ -96,28 +98,22 @@ class Ideone extends CI_Controller
     }
 
     /*
-     * /run
+     * /api/run
      *
      * 执行用户提交的代码
      */
-    function index()
+    function index_post()
     {
-        $result = array(
-            'result' => 'Method not allowed'
-        );
-        $code = $this->input->post('code');
-        if ($code) {
-            $submit = $this->submit($code);
+        $code = $this->post('code');
+        $submit = $this->submit($code);
 
-            if ($submit['error'] === 'OK') {
-                $result = $this->result($submit['link']);
-            } else {
-                $result = array(
-                    'result' => $submit['result']
-                );
-            }
+        if ($submit['error'] === 'OK') {
+            $result = $this->result($submit['link']);
+        } else {
+            $result = array(
+                'result' => $submit['result']
+            );
         }
-
-        echo json_encode($result);
+        $this->response($result);
     }
 }
