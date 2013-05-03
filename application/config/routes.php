@@ -100,6 +100,12 @@ $route['api/tutor/(:num).*'] = 'api/tutor_api/tutor';
 
 $route['api/run'] = 'api/ideone/index';
 
+/*
+ * 测试路由表
+ *
+ */
+$route['test/code'] = 'test/create_solution';
+
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

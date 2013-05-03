@@ -86,4 +86,21 @@ class Content_model extends CI_Model
         $this->db->where('id', $id);
         $this->db->update($this->content_tb_name, $data);
     }
+
+    /*
+     * get_content_id
+     *
+     * 根据表中主键获取 content_id 外键
+     * @param int id
+     * @return int content_id 如果不存在，则返回 0
+     */
+    function get_content_id($id)
+    {
+        $this->db->where('id', $id);
+        $this->db->select($this->content_field_name);
+        $query = $this->db->get($this->model_tb_name);
+        if ($query->num_rows() === 0)
+            return 0;
+        return $query->result_array()[0][$this->content_field_name];
+    }
 }

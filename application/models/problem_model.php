@@ -8,24 +8,6 @@ class Problem_model extends Content_model
 
 
     /*
-     * get_content_id
-     *
-     * 由 problem表主键得到content表主键
-     * @param int id
-     */
-    function get_content_id($id)
-    {
-        $this->db->where('id', $id);
-        $this->db->select('content_id');
-        $query = $this->db->get($this->model_tb_name);
-        $result = $query -> result_array();
-        var_dump($result);
-        return 1;
-        //return $result[0]['content_id'];
-    }
-
-
-    /*
      * get_by_id
      *
      * 根据id获取单条problem
