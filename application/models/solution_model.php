@@ -36,10 +36,9 @@ class Solution_model extends Content_model
     function create($data)
     {
         $content = $data['content'];
+        unset($data['content']);
         $content_id = $this->create_content($content);
-        $data = array(
-            'source_id' => $content_id
-        );
+        $data['source_id'] = $content_id;
         $this->db->insert($this->model_tb_name, $data);
     }
 

@@ -17,6 +17,7 @@ class Ideone extends REST_Controller
     {
         parent::__construct();
         $this->api = new IdeoneAPI();
+        $this->load->model('solution_model', 'model');
     }
 
     /*
@@ -31,6 +32,14 @@ class Ideone extends REST_Controller
 
         if ($submit['error'] === 'OK') {
             $result = $this->api->result($submit['link']);
+            $this->model->create(array(
+                'content' => $code,
+                'status' => 1,
+                'ideone_link' => $submit['link'],
+                'short_result' => $result['result'],
+                'detail_result' => $result['detail'],
+                'err_result' => $result['stderr']
+            ));
         } else {
             $result = array(
                 'result' => $submit['result']
