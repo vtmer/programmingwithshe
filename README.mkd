@@ -1,0 +1,30 @@
+# Programming with She
+
+传说中的和妹子一起编程，我们的口号是：程序设计不挂科 （伪）
+
+一个做得还不错的实验 & 练手项目(?) （真）
+
+Created by Maureen, xiaosheng and hbc with ♥
+
+### 目前完成度
+
+* 后台 @[MaureenChan](https://github.com/MaureenChan)
+
+* api 接口 @[xiaosheng](https://github.com/xiaosheng)
+
+* 评测 @[hbc](https://github.com/bcho)
+
+
+### 技术细节
+
+* 语言: （宇宙无敌最强的） PHP
+
+* 框架： [CodeIgniter](http://ellislab.com/codeigniter)
+
+* 三方类： [CodeIgniter Twig](https://github.com/bcho/codeigniter-twig)
+  [CodeIgniter RestServer](https://github.com/philsturgeon/codeigniter-restserver)
+
+* 三方库： [Twig](https://github.com/fabpot/Twig)
+
+* 三方支持： [Ideone](ideone.com) [Openjudge/Sandbox](https://github.com/openjudge/sandbox)
+  [Bootstrap](http://twitter.github.io/bootstrap/) [Sass](http://sass-lang.com)
